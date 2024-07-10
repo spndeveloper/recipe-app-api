@@ -20,6 +20,6 @@ jobs:
       - name: List files in /app directory
         run: ls -la /app
       - name: Test
-        run: docker-compose run --rm app sh -c "python manage.py test"
+        run: docker-compose run --rm app sh -c "python /home/runner/work/recipe-app-api/recipe-app-api/app/manage.py test"
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
