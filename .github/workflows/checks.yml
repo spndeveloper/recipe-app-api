@@ -17,8 +17,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Print current directory
         run: pwd
-      - name: List files in /app directory
-        run: ls -la /app
       - name: Test
         run: docker-compose run --rm app sh -c "python /home/runner/work/recipe-app-api/recipe-app-api/app/manage.py test"
       - name: Lint
