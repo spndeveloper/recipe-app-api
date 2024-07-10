@@ -18,6 +18,6 @@ jobs:
       - name: Print current directory
         run: pwd
       - name: Test
-        run: docker-compose run --rm app sh -c "python ../manage.py test"
+        run: docker-compose run --rm /home/runner/work/recipe-app-api/recipe-app-api/app/app sh -c "python manage.py test"
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
