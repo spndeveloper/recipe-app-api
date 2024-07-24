@@ -1,5 +1,9 @@
 """
+<<<<<<< HEAD
 Test for the tags API.
+=======
+Tests for the tags API.
+>>>>>>> 2c8ff1418535c1e3883f47aed1a0b77e16868004
 """
 from django.contrib.auth import get_user_model
 from django.urls import reverse
