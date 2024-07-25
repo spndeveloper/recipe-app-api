@@ -1,9 +1,5 @@
 """
-<<<<<<< HEAD
 Test for the tags API.
-=======
-Tests for the tags API.
->>>>>>> 2c8ff1418535c1e3883f47aed1a0b77e16868004
 """
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -86,4 +82,15 @@ class PrivateTagsApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         tag.refresh_from_db()
-        self.assertEqual(res.name, payload['name'])
+        self.assertEqual(tag.name, payload['name'])
+
+    def test_delete_tag(self):
+        """Test deleting a tag."""
+        tag = Tag.objects.create(user=self.user, name='Breakfast')
+
+        url = detail_url(tag.id)
+        res = self.client.delete(url)
+
+        self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
+        tags = Tag.objects.filter(user=self.user)
+        self.assertFalse(tags.exists())

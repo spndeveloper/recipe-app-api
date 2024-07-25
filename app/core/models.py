@@ -56,19 +56,11 @@ class Recipe(models.Model):
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     link = models.CharField(max_length=255, blank=True)
-<<<<<<< HEAD
     tags = models.ManyToManyField('Tag')
 
     def __str__(self):
         return self.title
 
-=======
-    tags = models.ManyToManyField('tag')
-
-    def __str__(self):
-        return self.title
-    
->>>>>>> 2c8ff1418535c1e3883f47aed1a0b77e16868004
 
 class Tag(models.Model):
     """Tag for filtering recipes."""
@@ -79,9 +71,4 @@ class Tag(models.Model):
     )
 
     def __str__(self):
-<<<<<<< HEAD
         return self.name
-=======
-        return self.name
-    
->>>>>>> 2c8ff1418535c1e3883f47aed1a0b77e16868004
