@@ -41,8 +41,6 @@ from recipe import serializers
         ]
     )
 )
-
-
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for manage recipe APIs."""
     serializer_class = serializers.RecipeDetailSerializer
@@ -107,12 +105,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
         ]
     )
 )
-
-
 class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.ListModelMixin,
-                 viewsets.GenericViewSet):
+                            mixins.UpdateModelMixin,
+                            mixins.ListModelMixin,
+                            viewsets.GenericViewSet):
     """Base viewset for recipe attributes."""
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -124,7 +120,8 @@ class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
         )
         queryset = self.queryset
         if assigned_only:
-            queryset = queryset.filter(recipe_isnull=False)
+            queryset = queryset.filter(recipe__isnull=False)
+
         return queryset.filter(
             user=self.request.user
         ).order_by('-name').distinct()
